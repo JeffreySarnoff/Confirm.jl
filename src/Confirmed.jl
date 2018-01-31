@@ -1,21 +1,13 @@
 module Confirmed
 
-exports @confirm, confirms!
+exports @confirm
 
-if VERSION < v"0.7.0-"
-    macro isdefined(x)
-        :(isdefined(Symbol($x)))
-    end
-end
-
-
-if ((@isdefined CONFIRM) && CONFIRM) || (get(ENV, "JULIA_CONFIRMS", "false") == "true") 
-    macro confirm(expr)
-        @assert $expr
-    end
-else
-    macro confirm(expr)
-    end
+if (VERSION >= v"0.7.0-")
+   CONFIRMS = (isdefined CONFIRMS) && CONFIRMS) ||
+              get(ENV, JULIA_CONFIRMS", "false")
+else        
+   CONFIRMS = (isdefined(:CONFIRMS) && CONFIRMS) ||
+              get(ENV, JULIA_CONFIRMS", "false")
 end
 
 
