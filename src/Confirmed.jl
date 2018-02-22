@@ -4,10 +4,10 @@ exports @confirm
 
 if (VERSION >= v"0.7.0-")
    CONFIRMS = (isdefined CONFIRMS) && CONFIRMS) ||
-              get(ENV, JULIA_CONFIRMS", "false")
+              get(ENV, "JULIA_CONFIRMS", "false")
 else        
    CONFIRMS = (isdefined(:CONFIRMS) && CONFIRMS) ||
-              get(ENV, JULIA_CONFIRMS", "false")
+              get(ENV, "JULIA_CONFIRMS", "false")
 end
 
 
